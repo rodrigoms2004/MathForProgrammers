@@ -1,0 +1,4 @@
+
+# installing
+pip install PyGame
+pip install PyOpenGL
