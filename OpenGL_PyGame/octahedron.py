@@ -8,7 +8,7 @@ from math import *
 
 # pip install pygame
 # pip install PyOpenGL
-# pip install PyOpenGL PyOpenGL_accelerate
+
 
 def normal(face):
     return(cross(subtract(face[1], face[0]), subtract(face[2], face[0])))
