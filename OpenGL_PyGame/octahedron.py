@@ -3,13 +3,17 @@ from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
 import matplotlib.cm
-from vectors import *
+from vectors import * 
 from math import *
+
+# pip install pygame
+# pip install PyOpenGL
+# pip install PyOpenGL PyOpenGL_accelerate
 
 def normal(face):
     return(cross(subtract(face[1], face[0]), subtract(face[2], face[0])))
-    blues = matplotlib.cm.get_cmap('Blues')
-  
+
+blues = matplotlib.cm.get_cmap('Blues')
 def shade(face,color_map=blues,light=(1,2,3)):
     return color_map(1 - dot(unit(normal(face)), unit(light)))
 
@@ -48,8 +52,9 @@ while True:
     glBegin(GL_TRIANGLES)
     for face in faces:
         color = shade(face,blues,light)
-    for vertex in face:
-        glColor3fv((color[0], color[1], color[2]))
-        glVertex3fv(vertex)
+        for vertex in face:
+            glColor3fv((color[0], color[1], color[2]))
+            glVertex3fv(vertex)
     glEnd()
+    print(clock.get_fps())
     pygame.display.flip()
